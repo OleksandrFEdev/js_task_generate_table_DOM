@@ -371,42 +371,44 @@ const died = people.map((person) => person.died);
 
 const century = people.map((person) => Math.ceil(person.died / 100));
 
-const ages = people.map((person) => (person.died -= person.born));
+const ages = people.map((person) => person.died - person.born);
 
 const table = document.querySelector('.dashboard');
 
-for (let i = 0; i < names.length; i++) {
-  const row = document.createElement('tr');
+if (table) {
+  for (let i = 0; i < names.length; i++) {
+    const row = document.createElement('tr');
 
-  const nameCell = document.createElement('td');
+    const nameCell = document.createElement('td');
 
-  nameCell.textContent = names[i];
-  row.appendChild(nameCell);
+    nameCell.textContent = names[i];
+    row.appendChild(nameCell);
 
-  const genderCell = document.createElement('td');
+    const genderCell = document.createElement('td');
 
-  genderCell.textContent = gender[i].sex;
-  row.appendChild(genderCell);
+    genderCell.textContent = gender[i].sex;
+    row.appendChild(genderCell);
 
-  const bornCell = document.createElement('td');
+    const bornCell = document.createElement('td');
 
-  bornCell.textContent = born[i];
-  row.appendChild(bornCell);
+    bornCell.textContent = born[i];
+    row.appendChild(bornCell);
 
-  const diedCell = document.createElement('td');
+    const diedCell = document.createElement('td');
 
-  diedCell.textContent = died[i];
-  row.appendChild(diedCell);
+    diedCell.textContent = died[i];
+    row.appendChild(diedCell);
 
-  const agesCell = document.createElement('td');
+    const ageCell = document.createElement('td');
 
-  agesCell.textContent = ages[i];
-  row.appendChild(agesCell);
+    ageCell.textContent = ages[i];
+    row.appendChild(ageCell);
 
-  const centuryCell = document.createElement('td');
+    const centuryCell = document.createElement('td');
 
-  centuryCell.textContent = century[i];
-  row.appendChild(centuryCell);
+    centuryCell.textContent = century[i];
+    row.appendChild(centuryCell);
 
-  table.appendChild(row);
+    table.appendChild(row);
+  }
 }
