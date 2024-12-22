@@ -358,3 +358,55 @@ const people = [
 console.log(people); // you can remove it
 
 // write your code here
+
+const names = people.map((person) => person.name);
+
+const gender = people.map((person) => ({
+  ...person,
+  sex: person.sex === 'm' ? 'Male' : 'Female',
+}));
+
+const born = people.map((person) => person.born);
+const died = people.map((person) => person.died);
+
+const century = people.map((person) => Math.ceil(person.died / 100));
+
+const ages = people.map((person) => (person.died -= person.born));
+
+const table = document.querySelector('.dashboard');
+
+for (let i = 0; i < names.length; i++) {
+  const row = document.createElement('tr');
+
+  const nameCell = document.createElement('td');
+
+  nameCell.textContent = names[i];
+  row.appendChild(nameCell);
+
+  const genderCell = document.createElement('td');
+
+  genderCell.textContent = gender[i].sex;
+  row.appendChild(genderCell);
+
+  const bornCell = document.createElement('td');
+
+  bornCell.textContent = born[i];
+  row.appendChild(bornCell);
+
+  const diedCell = document.createElement('td');
+
+  diedCell.textContent = died[i];
+  row.appendChild(diedCell);
+
+  const agesCell = document.createElement('td');
+
+  agesCell.textContent = ages[i];
+  row.appendChild(agesCell);
+
+  const centuryCell = document.createElement('td');
+
+  centuryCell.textContent = century[i];
+  row.appendChild(centuryCell);
+
+  table.appendChild(row);
+}
